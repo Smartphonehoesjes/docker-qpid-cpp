@@ -35,4 +35,4 @@ RUN cd qpid-cpp/bld && \
 RUN apt-get purge -y wget && \
     apt-get -y clean all
 
-ENTRYPOINT ["/usr/local/sbin/qpidd", "--protocols=amqp1.0"]
+CMD ["/usr/local/sbin/qpidd", "--protocols=amqp1.0"]

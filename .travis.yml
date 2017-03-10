@@ -1,0 +1,18 @@
+language: bash
+services: docker
+
+env:
+  - VERSION=0.1.0
+
+install:
+  - git clone https://github.com/docker-library/official-images.git ~/official-images
+
+before_script:
+  - image="qpid-cpp:$VERSION"
+
+script:
+  - travis_retry docker build -t "$image" .
+  - ~/official-images/test/run.sh "$image"
+
+after_script:
+- docker images
